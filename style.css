@@ -265,3 +265,38 @@ footer {
 .payment-container button:hover {
   background: #a61c1c;
 }
+
+#carrinho {
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+.item-carrinho {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+#total-pedido {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 15px;
+  color: #d62828;
+}
+
+.btn-adicionar {
+  padding: 12px 25px;
+  background: #d62828;
+  color: white;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  text-align: center;
+}
+
+.btn-adicionar:hover {
+  background: #a61c1c;
+}
