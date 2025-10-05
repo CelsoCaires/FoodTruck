@@ -31,13 +31,14 @@ section {
   margin-bottom: 20px;
   border-radius: 8px;
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 20px;
 }
 
 .item img {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   object-fit: cover;
   border-radius: 8px;
 }
@@ -48,3 +49,4 @@ footer {
   padding: 10px;
   font-size: 14px;
 }
+
