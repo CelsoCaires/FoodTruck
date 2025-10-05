@@ -4,109 +4,14 @@
   <meta charset="UTF-8">
   <title>Pedido - FoodTruck</title>
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
-
-  
-<script>
-  const precos = {
-    margherita: 11,
-    peperoni: 10,
-    coca: 4,
-    'fanta-laranja': 4,
-    'fanta-uva': 4,
-    sprite: 4
-  };
-
-  function alterarQtd(id, delta) {
-    const input = document.getElementById('qtd-' + id);
-    let valor = parseInt(input.value);
-    valor = Math.max(0, valor + delta);
-    input.value = valor;
-    atualizarTotal(id);
-  }
-
-  function atualizarTotal(id) {
-    const qtd = parseInt(document.getElementById('qtd-' + id).value);
-    const total = qtd * precos[id];
-    document.getElementById('total-' + id).innerText = 'Total: R$ ' + total.toFixed(2);
-    calcularTotalGeral();
-  }
-
-  function calcularTotalGeral() {
-    let total = 0;
-    for (let id in precos) {
-      const qtd = parseInt(document.getElementById('qtd-' + id).value);
-      total += qtd * precos[id];
-    }
-    document.getElementById('total-geral').innerText = 'R$ ' + total.toFixed(2);
-  }
-
-function enviarPedido() {
-  const formaPagamento = document.querySelector('input[name="pagamento"]:checked');
-  if (!formaPagamento) {
-    alert("Selecione a forma de pagamento.");
-    return;
-  }
-
-  // Verifica campos do cartão
-  const numero = document.getElementById('numero-cartao').value.trim();
-  const cvv = document.getElementById('cvv').value.trim();
-  const validade = document.getElementById('validade').value.trim();
-  const nome = document.getElementById('nome-cartao').value.trim();
-
-  if (!numero || !cvv || !validade || !nome) {
-    alert("Preencha todos os dados do cartão.");
-    return;
-  }
-
-  // Simula pagamento aprovado
-  alert("✅ Pagamento efetuado com sucesso.\n📦 Pedido enviado para a cozinha.");
-
-  // Redireciona para página principal após 2 segundos
-  setTimeout(() => {
-    window.location.href = "index.html";
-  }, 2000);
-}
-
-
-    let resumo = `🧾 Ficha da Mesa 1\nForma de pagamento: ${formaPagamento.value}\n\n👨‍🍳 Pedido para a cozinha:\n`;
-    for (let id in precos) {
-      const qtd = parseInt(document.getElementById('qtd-' + id).value);
-      if (qtd > 0) {
-        resumo += `- ${id.replace('-', ' ')}: ${qtd} unidade(s)\n`;
-      }
-    }
-
-    const total = document.getElementById('total-geral').innerText;
-    resumo += `\n💰 Total: ${total}`;
-
-    alert(resumo);
-  }
-function mostrarCamposCartao() {
-  document.getElementById('dados-cartao').style.display = 'block';
-}
-
-function detectarBandeira() {
-  const numero = document.getElementById('numero-cartao').value.replace(/\s/g, '');
-  let bandeira = '';
-
-  if (numero.startsWith('4')) bandeira = 'Visa';
-  else if (numero.startsWith('5')) bandeira = 'Mastercard';
-  else if (numero.startsWith('636')) bandeira = 'Elo';
-  else if (numero.startsWith('5067')) bandeira = 'Alelo';
-  else if (numero.startsWith('6060')) bandeira = 'Sodexo';
-  else bandeira = 'Bandeira não reconhecida';
-
-  document.getElementById('bandeira-cartao').innerText = 'Bandeira: ' + bandeira;
-} 
-</script>
-  
 <body>
   <header>
     <h1>Pedido - FoodTruck</h1>
     <nav>
-      <a href="index.html">Voltar ao Cardápio</a>
-      <a href="qrcodes.html">QR Codes</a>
+      <a href="#">Voltar ao Cardápio</a>
+      <a href="#">QR Codes</a>
     </nav>
   </header>
 
@@ -118,31 +23,29 @@ function detectarBandeira() {
   <section class="frame">
     <h2>🍕 Pizzas</h2>
 
-    <!-- Pizza Margherita -->
     <div class="card">
       <img src="https://cdn.pixabay.com/photo/2020/03/28/17/10/pizza-4975426_1280.jpg" alt="Pizza Margherita">
       <h3>Pizza Margherita</h3>
-      <p>Molho de tomate, mussarela fresca, manjericão, parmesão e azeite extra virgem</p>
+      <p>Molho de tomate, mussarela fresca, manjericão e parmesão</p>
       <div class="qtd-control">
-        <button type="button" onclick="alterarQtd('margherita', -1)">–</button>
+        <button onclick="alterarQtd('margherita', -1)">–</button>
         <input type="number" id="qtd-margherita" value="0" min="0" onchange="atualizarTotal('margherita')">
-        <button type="button" onclick="alterarQtd('margherita', 1)">+</button>
+        <button onclick="alterarQtd('margherita', 1)">+</button>
       </div>
-      <span>Preço unitário: R$ 11,00</span>
+      <span>Preço: R$ 11,00</span>
       <div id="total-margherita" class="total-produto">Total: R$ 0.00</div>
     </div>
 
-    <!-- Pizza Peperoni -->
     <div class="card">
       <img src="https://cdn.pixabay.com/photo/2022/06/15/18/28/pizza-7263827_1280.jpg" alt="Pizza Peperoni">
       <h3>Pizza Peperoni</h3>
       <p>Peperoni crocante, queijo derretido e molho especial</p>
       <div class="qtd-control">
-        <button type="button" onclick="alterarQtd('peperoni', -1)">–</button>
+        <button onclick="alterarQtd('peperoni', -1)">–</button>
         <input type="number" id="qtd-peperoni" value="0" min="0" onchange="atualizarTotal('peperoni')">
-        <button type="button" onclick="alterarQtd('peperoni', 1)">+</button>
+        <button onclick="alterarQtd('peperoni', 1)">+</button>
       </div>
-      <span>Preço unitário: R$ 10,00</span>
+      <span>Preço: R$ 10,00</span>
       <div id="total-peperoni" class="total-produto">Total: R$ 0.00</div>
     </div>
   </section>
@@ -151,88 +54,82 @@ function detectarBandeira() {
   <section class="frame">
     <h2>🥤 Bebidas</h2>
 
-    <!-- Coca-Cola -->
     <div class="card">
       <img src="https://cdn.pixabay.com/photo/2016/03/05/19/02/coca-cola-1236241_1280.jpg" alt="Coca-Cola">
       <h3>Coca-Cola</h3>
-      <p>Refrigerante tradicional, lata 350ml</p>
+      <p>Lata 350ml</p>
       <div class="qtd-control">
-        <button type="button" onclick="alterarQtd('coca', -1)">–</button>
+        <button onclick="alterarQtd('coca', -1)">–</button>
         <input type="number" id="qtd-coca" value="0" min="0" onchange="atualizarTotal('coca')">
-        <button type="button" onclick="alterarQtd('coca', 1)">+</button>
+        <button onclick="alterarQtd('coca', 1)">+</button>
       </div>
-      <span>Preço unitário: R$ 4,00</span>
+      <span>Preço: R$ 4,00</span>
       <div id="total-coca" class="total-produto">Total: R$ 0.00</div>
     </div>
 
-    <!-- Fanta Laranja -->
     <div class="card">
       <img src="https://cdn.pixabay.com/photo/2020/06/03/17/18/fanta-5254556_1280.jpg" alt="Fanta Laranja">
       <h3>Fanta Laranja</h3>
-      <p>Sabor laranja, lata 350ml</p>
+      <p>Lata 350ml</p>
       <div class="qtd-control">
-        <button type="button" onclick="alterarQtd('fanta-laranja', -1)">–</button>
+        <button onclick="alterarQtd('fanta-laranja', -1)">–</button>
         <input type="number" id="qtd-fanta-laranja" value="0" min="0" onchange="atualizarTotal('fanta-laranja')">
-        <button type="button" onclick="alterarQtd('fanta-laranja', 1)">+</button>
+        <button onclick="alterarQtd('fanta-laranja', 1)">+</button>
       </div>
-      <span>Preço unitário: R$ 4,00</span>
+      <span>Preço: R$ 4,00</span>
       <div id="total-fanta-laranja" class="total-produto">Total: R$ 0.00</div>
     </div>
 
-    <!-- Fanta Uva -->
     <div class="card">
       <img src="https://cdn.pixabay.com/photo/2020/06/03/17/18/fanta-5254557_1280.jpg" alt="Fanta Uva">
       <h3>Fanta Uva</h3>
-      <p>Sabor uva, lata 350ml</p>
+      <p>Lata 350ml</p>
       <div class="qtd-control">
-        <button type="button" onclick="alterarQtd('fanta-uva', -1)">–</button>
+        <button onclick="alterarQtd('fanta-uva', -1)">–</button>
         <input type="number" id="qtd-fanta-uva" value="0" min="0" onchange="atualizarTotal('fanta-uva')">
-        <button type="button" onclick="alterarQtd('fanta-uva', 1)">+</button>
+        <button onclick="alterarQtd('fanta-uva', 1)">+</button>
       </div>
-      <span>Preço unitário: R$ 4,00</span>
+      <span>Preço: R$ 4,00</span>
       <div id="total-fanta-uva" class="total-produto">Total: R$ 0.00</div>
     </div>
 
-    <!-- Sprite -->
     <div class="card">
       <img src="https://cdn.pixabay.com/photo/2020/06/03/17/18/sprite-5254558_1280.jpg" alt="Sprite">
       <h3>Sprite</h3>
-      <p>Sabor limão, lata 350ml</p>
+      <p>Lata 350ml</p>
       <div class="qtd-control">
-        <button type="button" onclick="alterarQtd('sprite', -1)">–</button>
+        <button onclick="alterarQtd('sprite', -1)">–</button>
         <input type="number" id="qtd-sprite" value="0" min="0" onchange="atualizarTotal('sprite')">
-        <button type="button" onclick="alterarQtd('sprite', 1)">+</button>
+        <button onclick="alterarQtd('sprite', 1)">+</button>
       </div>
-      <span>Preço unitário: R$ 4,00</span>
+      <span>Preço: R$ 4,00</span>
       <div id="total-sprite" class="total-produto">Total: R$ 0.00</div>
     </div>
   </section>
 
   <!-- 💳 Pagamento -->
-<section class="frame">
-  <h2>💳 Forma de Pagamento</h2>
-  <label><input type="radio" name="pagamento" value="Cartão de Débito" onchange="mostrarCamposCartao()"> Cartão de Débito</label><br>
-  <label><input type="radio" name="pagamento" value="Cartão de Crédito" onchange="mostrarCamposCartao()"> Cartão de Crédito</label><br>
-  <label><input type="radio" name="pagamento" value="Vale Refeição" onchange="mostrarCamposCartao()"> Vale Refeição</label><br>
+  <section class="frame">
+    <h2>💳 Forma de Pagamento</h2>
+    <label><input type="radio" name="pagamento" value="Cartão de Débito" onchange="mostrarCamposCartao()"> Cartão de Débito</label><br>
+    <label><input type="radio" name="pagamento" value="Cartão de Crédito" onchange="mostrarCamposCartao()"> Cartão de Crédito</label><br>
+    <label><input type="radio" name="pagamento" value="Vale Refeição" onchange="mostrarCamposCartao()"> Vale Refeição</label><br>
 
-<div id="dados-cartao" style="display:none; margin-top:15px;">
-  <label>Número do Cartão:</label><br>
-  <input type="text" id="numero-cartao" maxlength="19" oninput="detectarBandeira()" placeholder="Ex: 4111 1111 1111 1111"><br><br>
+    <div id="dados-cartao" style="display:none; margin-top:15px;">
+      <label>Número do Cartão:</label><br>
+      <input type="text" id="numero-cartao" maxlength="19" oninput="detectarBandeira()" placeholder="Ex: 4111 1111 1111 1111"><br><br>
 
-  <label>Nome no Cartão:</label><br>
-  <input type="text" id="nome-cartao" maxlength="40" placeholder="Ex: JOÃO DA SILVA"><br><br>
+      <label>Nome no Cartão:</label><br>
+      <input type="text" id="nome-cartao" maxlength="40" placeholder="Ex: JOÃO DA SILVA"><br><br>
 
-  <label>Data de Validade (MM/AA):</label><br>
-  <input type="text" id="validade" maxlength="5" placeholder="Ex: 12/26"><br><br>
-  
-  <label>CVV:</label><br>
-  <input type="text" id="cvv" maxlength="4" placeholder="Ex: 123"><br><br>
+      <label>Data de Validade (MM/AA):</label><br>
+      <input type="text" id="validade" maxlength="5" placeholder="Ex: 12/26"><br><br>
 
-  <div id="bandeira-cartao" style="font-weight:bold; color:#d62828;"></div>
-</div>
+      <label>CVV:</label><br>
+      <input type="text" id="cvv" maxlength="4" placeholder="Ex: 123"><br><br>
 
-
-</section>
+      <div id="bandeira-cartao" style="font-weight:bold; color:#d62828;"></div>
+    </div>
+  </section>
 
   <!-- 💰 Total geral e envio -->
   <section class="frame">
@@ -248,8 +145,3 @@ function detectarBandeira() {
   </footer>
 </body>
 </html>
-
-
-
-
-
