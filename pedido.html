@@ -5,6 +5,8 @@
   <title>Pedido - FoodTruck</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
+  
 <script>
   const precos = {
     margherita: 11,
@@ -59,6 +61,23 @@
 
     alert(resumo);
   }
+function mostrarCamposCartao() {
+  document.getElementById('dados-cartao').style.display = 'block';
+}
+
+function detectarBandeira() {
+  const numero = document.getElementById('numero-cartao').value.replace(/\s/g, '');
+  let bandeira = '';
+
+  if (numero.startsWith('4')) bandeira = 'Visa';
+  else if (numero.startsWith('5')) bandeira = 'Mastercard';
+  else if (numero.startsWith('636')) bandeira = 'Elo';
+  else if (numero.startsWith('5067')) bandeira = 'Alelo';
+  else if (numero.startsWith('6060')) bandeira = 'Sodexo';
+  else bandeira = 'Bandeira não reconhecida';
+
+  document.getElementById('bandeira-cartao').innerText = 'Bandeira: ' + bandeira;
+} 
 </script>
   
 <body>
@@ -169,13 +188,20 @@
   </section>
 
   <!-- 💳 Pagamento -->
-  <section class="frame">
-    <h2>💳 Forma de Pagamento</h2>
-    <label><input type="radio" name="pagamento" value="Cartão de Débito"> Cartão de Débito</label><br>
-    <label><input type="radio" name="pagamento" value="Cartão de Crédito"> Cartão de Crédito</label><br>
-    <label><input type="radio" name="pagamento" value="Vale Refeição"> Vale Refeição</label><br>
-    <label><input type="radio" name="pagamento" value="Dinheiro"> Dinheiro</label>
-  </section>
+<section class="frame">
+  <h2>💳 Forma de Pagamento</h2>
+  <label><input type="radio" name="pagamento" value="Cartão de Débito" onchange="mostrarCamposCartao()"> Cartão de Débito</label><br>
+  <label><input type="radio" name="pagamento" value="Cartão de Crédito" onchange="mostrarCamposCartao()"> Cartão de Crédito</label><br>
+  <label><input type="radio" name="pagamento" value="Vale Refeição" onchange="mostrarCamposCartao()"> Vale Refeição</label><br>
+
+  <div id="dados-cartao" style="display:none; margin-top:15px;">
+    <label>Número do Cartão:</label><br>
+    <input type="text" id="numero-cartao" maxlength="19" oninput="detectarBandeira()" placeholder="Ex: 4111 1111 1111 1111"><br><br>
+    <label>CVV:</label><br>
+    <input type="text" id="cvv" maxlength="4" placeholder="Ex: 123"><br><br>
+    <div id="bandeira-cartao" style="font-weight:bold; color:#d62828;"></div>
+  </div>
+</section>
 
   <!-- 💰 Total geral e envio -->
   <section class="frame">
@@ -191,3 +217,4 @@
   </footer>
 </body>
 </html>
+
