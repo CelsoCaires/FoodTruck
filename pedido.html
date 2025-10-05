@@ -194,13 +194,22 @@ function detectarBandeira() {
   <label><input type="radio" name="pagamento" value="Cartão de Crédito" onchange="mostrarCamposCartao()"> Cartão de Crédito</label><br>
   <label><input type="radio" name="pagamento" value="Vale Refeição" onchange="mostrarCamposCartao()"> Vale Refeição</label><br>
 
-  <div id="dados-cartao" style="display:none; margin-top:15px;">
-    <label>Número do Cartão:</label><br>
-    <input type="text" id="numero-cartao" maxlength="19" oninput="detectarBandeira()" placeholder="Ex: 4111 1111 1111 1111"><br><br>
-    <label>CVV:</label><br>
-    <input type="text" id="cvv" maxlength="4" placeholder="Ex: 123"><br><br>
-    <div id="bandeira-cartao" style="font-weight:bold; color:#d62828;"></div>
-  </div>
+<div id="dados-cartao" style="display:none; margin-top:15px;">
+  <label>Número do Cartão:</label><br>
+  <input type="text" id="numero-cartao" maxlength="19" oninput="detectarBandeira()" placeholder="Ex: 4111 1111 1111 1111"><br><br>
+
+  <label>CVV:</label><br>
+  <input type="text" id="cvv" maxlength="4" placeholder="Ex: 123"><br><br>
+
+  <label>Data de Validade (MM/AA):</label><br>
+  <input type="text" id="validade" maxlength="5" placeholder="Ex: 12/26"><br><br>
+
+  <label>Nome no Cartão:</label><br>
+  <input type="text" id="nome-cartao" maxlength="40" placeholder="Ex: JOÃO DA SILVA"><br><br>
+
+  <div id="bandeira-cartao" style="font-weight:bold; color:#d62828;"></div>
+</div>
+
 </section>
 
   <!-- 💰 Total geral e envio -->
@@ -217,4 +226,5 @@ function detectarBandeira() {
   </footer>
 </body>
 </html>
+
 
