@@ -36,6 +36,7 @@ nav a {
   font-size: 14px;
   border-radius: 6px;
   cursor: pointer;
+  transition: background 0.3s;
 }
 
 .qtd-control button:hover {
@@ -46,12 +47,16 @@ nav a {
   width: 45px;
   text-align: center;
   font-size: 14px;
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .total-produto {
   margin-top: 8px;
   font-weight: bold;
   color: #d62828;
+  font-size: 15px;
 }
 
 
@@ -168,4 +173,5 @@ footer {
   padding: 10px;
   font-size: 14px;
 }
+
 
