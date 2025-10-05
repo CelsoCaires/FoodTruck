@@ -8,7 +8,7 @@
 </head>
 <body>
   <header>
-    <h1>Pedido - FoodTruck</h1>
+    <h1>FoodTruck - Faça Seu Pedido</h1>
     <nav>
       <a href="#cardapio">Voltar ao Cardápio</a>
     </nav>
@@ -16,42 +16,42 @@
 
   <!-- 🛋 Verificação da Mesa -->
   <section class="frame">
-    <h2>📍 Verificar Mesa</h2>
+    <h2>📍 Verifique Sua Mesa</h2>
     <label for="numero-mesa">Digite o número da mesa:</label><br>
     <input type="number" id="numero-mesa" placeholder="Número da Mesa" min="1" onchange="verificarMesa()">
     <div id="mensagem-mesa" style="font-weight: bold;"></div>
   </section>
 
-  <!-- 🍕 Pizzas -->
+  <!-- 🍕 Cardápio de Pizzas -->
   <section class="frame" id="cardapio">
-    <h2>🍕 Pizzas</h2>
+    <h2>🍕 Nossas Pizzas</h2>
 
     <!-- Pizza Margherita -->
     <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Pizza_Margherita.jpg/800px-Pizza_Margherita.jpg" alt="Pizza Margherita">
+      <img src="https://images.unsplash.com/photo-1609771518469-2b67c68cba74" alt="Pizza Margherita">
       <h3>Pizza Margherita</h3>
-      <p>Molho de tomate, mussarela fresca, manjericão e parmesão</p>
+      <p>Molho de tomate, mussarela fresca, manjericão e parmesão.</p>
       <div class="qtd-control">
         <button onclick="alterarQtd('margherita', -1)">–</button>
         <input type="number" id="qtd-margherita" value="0" min="0" onchange="atualizarTotal('margherita')">
         <button onclick="alterarQtd('margherita', 1)">+</button>
       </div>
       <span>Preço: R$ 11,00</span>
-      <div id="total-margherita" class="total-produto">Total: R$ 0.00</div>
+      <div id="total-margherita" class="total-produto">Total: R$ 0,00</div>
     </div>
 
     <!-- Pizza Peperoni -->
     <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Pizza_pepperoni.jpg" alt="Pizza Peperoni">
+      <img src="https://images.unsplash.com/photo-1582477028756-3c1534321326" alt="Pizza Peperoni">
       <h3>Pizza Peperoni</h3>
-      <p>Peperoni crocante, queijo derretido e molho especial</p>
+      <p>Peperoni crocante, queijo derretido e molho especial.</p>
       <div class="qtd-control">
         <button onclick="alterarQtd('peperoni', -1)">–</button>
         <input type="number" id="qtd-peperoni" value="0" min="0" onchange="atualizarTotal('peperoni')">
         <button onclick="alterarQtd('peperoni', 1)">+</button>
       </div>
       <span>Preço: R$ 10,00</span>
-      <div id="total-peperoni" class="total-produto">Total: R$ 0.00</div>
+      <div id="total-peperoni" class="total-produto">Total: R$ 0,00</div>
     </div>
   </section>
 
@@ -61,7 +61,7 @@
 
     <!-- Coca-Cola -->
     <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Coca-Cola_logo_2019.svg" alt="Coca-Cola">
+      <img src="https://images.unsplash.com/photo-1601742649832-62311be9d238" alt="Coca-Cola">
       <h3>Coca-Cola</h3>
       <p>Lata 350ml</p>
       <div class="qtd-control">
@@ -70,12 +70,12 @@
         <button onclick="alterarQtd('coca', 1)">+</button>
       </div>
       <span>Preço: R$ 4,00</span>
-      <div id="total-coca" class="total-produto">Total: R$ 0.00</div>
+      <div id="total-coca" class="total-produto">Total: R$ 0,00</div>
     </div>
 
     <!-- Fanta Laranja -->
     <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Fanta_logo.svg" alt="Fanta Laranja">
+      <img src="https://images.unsplash.com/photo-1601742649832-62311be9d238" alt="Fanta Laranja">
       <h3>Fanta Laranja</h3>
       <p>Lata 350ml</p>
       <div class="qtd-control">
@@ -84,12 +84,12 @@
         <button onclick="alterarQtd('fanta-laranja', 1)">+</button>
       </div>
       <span>Preço: R$ 4,00</span>
-      <div id="total-fanta-laranja" class="total-produto">Total: R$ 0.00</div>
+      <div id="total-fanta-laranja" class="total-produto">Total: R$ 0,00</div>
     </div>
 
     <!-- Fanta Uva -->
     <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Fanta_Uva.svg" alt="Fanta Uva">
+      <img src="https://images.unsplash.com/photo-1591645204605-389b4c1b9257" alt="Fanta Uva">
       <h3>Fanta Uva</h3>
       <p>Lata 350ml</p>
       <div class="qtd-control">
@@ -98,12 +98,12 @@
         <button onclick="alterarQtd('fanta-uva', 1)">+</button>
       </div>
       <span>Preço: R$ 4,00</span>
-      <div id="total-fanta-uva" class="total-produto">Total: R$ 0.00</div>
+      <div id="total-fanta-uva" class="total-produto">Total: R$ 0,00</div>
     </div>
 
     <!-- Sprite -->
     <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Sprite_logo.svg" alt="Sprite">
+      <img src="https://images.unsplash.com/photo-1601742649832-62311be9d238" alt="Sprite">
       <h3>Sprite</h3>
       <p>Lata 350ml</p>
       <div class="qtd-control">
@@ -112,11 +112,11 @@
         <button onclick="alterarQtd('sprite', 1)">+</button>
       </div>
       <span>Preço: R$ 4,00</span>
-      <div id="total-sprite" class="total-produto">Total: R$ 0.00</div>
+      <div id="total-sprite" class="total-produto">Total: R$ 0,00</div>
     </div>
   </section>
 
-  <!-- 💳 Pagamento -->
+  <!-- 💳 Forma de Pagamento -->
   <section class="frame">
     <h2>💳 Forma de Pagamento</h2>
     <label><input type="radio" name="pagamento" value="Cartão de Débito" onchange="mostrarCamposCartao()"> Cartão de Débito</label><br>
@@ -139,10 +139,5 @@
       <div id="bandeira-cartao" style="font-weight:bold; color:#d62828;"></div>
     </div>
   </section>
-
-  <footer>
-    <div id="total-geral">R$ 0.00</div>
-    <button onclick="enviarPedido()">Finalizar Pedido</button>
-  </footer>
 </body>
 </html>
