@@ -174,4 +174,13 @@ footer {
   font-size: 14px;
 }
 
+#dados-cartao input {
+  width: 250px;
+  padding: 6px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+
 
