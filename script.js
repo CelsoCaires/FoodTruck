@@ -56,3 +56,13 @@ function detectarBandeira() {
 function enviarPedido() {
   alert("Pedido enviado com sucesso!");
 }
+function verificarMesa() {
+  const numeroMesa = document.getElementById('numero-mesa').value;
+  const mensagemMesa = document.getElementById('mensagem-mesa');
+
+  if (numeroMesa > 0) {
+    mensagemMesa.textContent = `Mesa ${numeroMesa} localizada! Faça seu pedido.`;
+  } else {
+    mensagemMesa.textContent = 'Por favor, insira um número de mesa válido!';
+  }
+}
