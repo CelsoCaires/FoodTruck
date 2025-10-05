@@ -15,9 +15,10 @@
   </header>
 
   <section class="frame">
-    <h2>🧺 Seu Pedido</h2>
-
+    <h2>🧺 Escolha os produtos</h2>
     <form>
+
+      <!-- Pizzas -->
       <div class="card">
         <img src="https://cdn.pixabay.com/photo/2020/03/28/17/10/pizza-4975426_1280.jpg" alt="Pizza Margherita">
         <h3>Pizza Margherita</h3>
@@ -28,6 +29,16 @@
       </div>
 
       <div class="card">
+        <img src="https://cdn.pixabay.com/photo/2022/06/15/18/28/pizza-7263827_1280.jpg" alt="Pizza Peperoni">
+        <h3>Pizza Peperoni</h3>
+        <p>Peperoni crocante, queijo derretido e molho especial</p>
+        <label for="qtd-peperoni">Quantidade:</label>
+        <input type="number" id="qtd-peperoni" name="peperoni" min="0" value="0">
+        <span>R$ 10,00</span>
+      </div>
+
+      <!-- Bebidas -->
+      <div class="card">
         <img src="https://cdn.pixabay.com/photo/2016/03/05/19/02/coca-cola-1236241_1280.jpg" alt="Coca-Cola">
         <h3>Coca-Cola</h3>
         <p>Refrigerante tradicional, lata 350ml</p>
@@ -36,9 +47,37 @@
         <span>R$ 4,00</span>
       </div>
 
+      <div class="card">
+        <img src="https://cdn.pixabay.com/photo/2020/06/03/17/18/fanta-5254556_1280.jpg" alt="Fanta Laranja">
+        <h3>Fanta Laranja</h3>
+        <p>Sabor laranja, lata 350ml</p>
+        <label for="qtd-fanta-laranja">Quantidade:</label>
+        <input type="number" id="qtd-fanta-laranja" name="fanta-laranja" min="0" value="0">
+        <span>R$ 4,00</span>
+      </div>
+
+      <div class="card">
+        <img src="https://cdn.pixabay.com/photo/2020/06/03/17/18/fanta-5254557_1280.jpg" alt="Fanta Uva">
+        <h3>Fanta Uva</h3>
+        <p>Sabor uva, lata 350ml</p>
+        <label for="qtd-fanta-uva">Quantidade:</label>
+        <input type="number" id="qtd-fanta-uva" name="fanta-uva" min="0" value="0">
+        <span>R$ 4,00</span>
+      </div>
+
+      <div class="card">
+        <img src="https://cdn.pixabay.com/photo/2020/06/03/17/18/sprite-5254558_1280.jpg" alt="Sprite">
+        <h3>Sprite</h3>
+        <p>Sabor limão, lata 350ml</p>
+        <label for="qtd-sprite">Quantidade:</label>
+        <input type="number" id="qtd-sprite" name="sprite" min="0" value="0">
+        <span>R$ 4,00</span>
+      </div>
+
+      <!-- Total e botão -->
       <div class="card total">
         <h3>Total do Pedido</h3>
-        <span>Calculado após envio</span>
+        <span>Será calculado após envio</span>
       </div>
 
       <div style="text-align:center; margin-top:20px;">
