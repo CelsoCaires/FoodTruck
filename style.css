@@ -13,6 +13,11 @@ header {
   text-align: center;
 }
 
+header h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
 nav a {
   margin: 0 10px;
   color: white;
@@ -58,7 +63,6 @@ nav a {
   color: #d62828;
   font-size: 15px;
 }
-
 
 .banner-img {
   width: 100%;
@@ -131,56 +135,4 @@ nav a {
   margin-top: 10px;
   font-weight: bold;
   color: #d62828;
-  font-size: 16px;
-}
-
-.total {
-  background: #f8f8f8;
-  border: 2px dashed #d62828;
-  padding: 20px;
-  margin-top: 30px;
-  text-align: center;
-}
-
-.total h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.total span {
-  font-size: 22px;
-  font-weight: bold;
-  color: #d62828;
-}
-
-button {
-  background: #d62828;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #a61c1c;
-}
-
-footer {
-  background: #eee;
-  text-align: center;
-  padding: 10px;
-  font-size: 14px;
-}
-
-#dados-cartao input {
-  width: 250px;
-  padding: 6px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
-
-
-
+  font-size:
