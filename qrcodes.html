@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>QR Codes das Mesas</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #fff8f0; }
+    h1 { color: #d62828; }
+    .mesa { margin-bottom: 30px; }
+  </style>
+</head>
+<body>
+  <h1>QR Codes para Mesas</h1>
+  <div id="qrcodes"></div>
+
+  <script>
+    for (let i = 1; i <= 5; i++) {
+      const div = document.createElement("div");
+      div.className = "mesa";
+      div.innerHTML = `<h3>Mesa ${i}</h3>`;
+      new QRCode(div, {
+        text: `https://seuusuario.github.io/FoodTruck/pedido.html?mesa=${i}`,
+        width: 128,
+        height: 128
+      });
+      document.getElementById("qrcodes").appendChild(div);
+    }
+  </script>
+</body>
+</html>

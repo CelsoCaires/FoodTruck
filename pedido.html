@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Pedido da Mesa</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #fff8f0; }
+    h1 { color: #d62828; }
+    label { display: block; margin: 10px 0; }
+    button { margin-top: 20px; padding: 10px 20px; background: #f77f00; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    #resumo { margin-top: 30px; border-top: 1px solid #ccc; padding-top: 20px; }
+
+    /* Estilo para impressão */
+    @media print {
+      body { background: white; color: black; }
+      button, form, h1 { display: none; }
+      #resumo { border: none; margin: 0; padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Pedido da Mesa <span id="mesa-numero"></span></h1>
+
+  <form id="form-pedido">
+    <h2>Escolha sua pizza:</h2>
+    <label><input type="radio" name="pizza" value="Queijo"> Queijo – R$10</label>
+    <label><input type="radio" name="pizza" value="Peperoni"> Peperoni – R$10</label>
+
+    <h2>Escolha seu refrigerante:</h2>
+    <label><input type="checkbox" name="refri" value="Coca-Cola"> Coca-Cola – R$4</label>
+    <label><input type="checkbox" name="refri" value="Fanta"> Fanta – R$4</label>
+    <label><input type="checkbox" name="refri" value="Sprite"> Sprite – R$4</label>
+    <label><input type="checkbox" name="refri" value="Fanta Uva"> Fanta Uva – R$4</label>
+
+    <button type="submit">Finalizar Pedido</button>
+  </form>
+
+  <div id="resumo"></div>
+
+  <script>
+    const mesa = new URLSearchParams(window.location.search).get("mesa") || "N/A";
+    document.getElementById("mesa-numero").textContent = mesa;
+
+    document.getElementById("form-pedido").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const pizza = document.querySelector('input[name="pizza"]:checked');
+      const refris = Array.from(document.querySelectorAll('input[name="refri"]:checked')).map(el => el.value);
+
+      let resumo = `<h2>Resumo do Pedido</h2>`;
+      resumo += `<p><strong>Mesa:</strong> ${mesa}</p>`;
+      resumo += `<p><strong>Pizza:</strong> ${pizza ? pizza.value : "Nenhuma selecionada"}</p>`;
+      resumo += `<p><strong>Refrigerantes:</strong> ${refris.length ? refris.join(", ") : "Nenhum"}</p>`;
+      resumo += `<p><strong>Total:</strong> R$${(pizza ? 10 : 0) + (refris.length * 4)}</p>`;
+
+      document.getElementById("resumo").innerHTML = resumo;
+
+      // Imprimir automaticamente após gerar o pedido
+      setTimeout(() => {
+        window.print();
+      }, 500);
+    });
+  </script>
+</body>
+</html>
