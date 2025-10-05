@@ -17,24 +17,34 @@
   <section class="frame">
     <h2>🧺 Seu Pedido</h2>
 
-    <div class="card">
-      <img src="https://cdn.pixabay.com/photo/2020/03/28/17/10/pizza-4975426_1280.jpg" alt="Pizza Margherita">
-      <h3>Pizza Margherita</h3>
-      <p>Quantidade: 1</p>
-      <span>R$ 11,00</span>
-    </div>
+    <form>
+      <div class="card">
+        <img src="https://cdn.pixabay.com/photo/2020/03/28/17/10/pizza-4975426_1280.jpg" alt="Pizza Margherita">
+        <h3>Pizza Margherita</h3>
+        <p>Molho de tomate, mussarela fresca, manjericão, parmesão e azeite extra virgem</p>
+        <label for="qtd-margherita">Quantidade:</label>
+        <input type="number" id="qtd-margherita" name="margherita" min="0" value="0">
+        <span>R$ 11,00</span>
+      </div>
 
-    <div class="card">
-      <img src="https://cdn.pixabay.com/photo/2016/03/05/19/02/coca-cola-1236241_1280.jpg" alt="Coca-Cola">
-      <h3>Coca-Cola</h3>
-      <p>Quantidade: 2</p>
-      <span>R$ 8,00</span>
-    </div>
+      <div class="card">
+        <img src="https://cdn.pixabay.com/photo/2016/03/05/19/02/coca-cola-1236241_1280.jpg" alt="Coca-Cola">
+        <h3>Coca-Cola</h3>
+        <p>Refrigerante tradicional, lata 350ml</p>
+        <label for="qtd-coca">Quantidade:</label>
+        <input type="number" id="qtd-coca" name="coca" min="0" value="0">
+        <span>R$ 4,00</span>
+      </div>
 
-    <div class="card total">
-      <h3>Total do Pedido</h3>
-      <span>R$ 19,00</span>
-    </div>
+      <div class="card total">
+        <h3>Total do Pedido</h3>
+        <span>Calculado após envio</span>
+      </div>
+
+      <div style="text-align:center; margin-top:20px;">
+        <button type="submit">Enviar Pedido</button>
+      </div>
+    </form>
   </section>
 
   <footer>
