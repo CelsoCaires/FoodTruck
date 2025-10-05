@@ -4,69 +4,64 @@
   <meta charset="UTF-8">
   <title>Pedido - FoodTruck</title>
   <link rel="stylesheet" href="style.css">
-  <script>
-    const precos = {
-      margherita: 11,
-      peperoni: 10,
-      coca: 4,
-      'fanta-laranja': 4,
-      'fanta-uva': 4,
-      sprite: 4
-    };
-
-    function getMesa() {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get('mesa') || 'Não informada';
-    }
-
-    function alterarQtd(id, delta) {
-      const input = document.getElementById('qtd-' + id);
-      let valor = parseInt(input.value);
-      valor = Math.max(0, valor + delta);
-      input.value = valor;
-      atualizarTotal(id);
-    }
-
-    function atualizarTotal(id) {
-      const qtd = parseInt(document.getElementById('qtd-' + id).value);
-      const total = qtd * precos[id];
-      document.getElementById('total-' + id).innerText = 'Total: R$ ' + total.toFixed(2);
-      calcularTotalGeral();
-    }
-
-    function calcularTotalGeral() {
-      let total = 0;
-      for (let id in precos) {
-        const qtd = parseInt(document.getElementById('qtd-' + id).value);
-        total += qtd * precos[id];
-      }
-      document.getElementById('total-geral').innerText = 'R$ ' + total.toFixed(2);
-    }
-
-    function enviarPedido() {
-      const mesa = getMesa();
-      const formaPagamento = document.querySelector('input[name="pagamento"]:checked');
-      if (!formaPagamento) {
-        alert("Selecione a forma de pagamento.");
-        return;
-      }
-
-      let resumo = `🧾 Ficha da Mesa ${mesa}\nForma de pagamento: ${formaPagamento.value}\n\n👨‍🍳 Pedido para a cozinha:\n`;
-      for (let id in precos) {
-        const qtd = parseInt(document.getElementById('qtd-' + id).value);
-        if (qtd > 0) {
-          resumo += `- ${id.replace('-', ' ')}: ${qtd} unidade(s)\n`;
-        }
-      }
-
-      const total = document.getElementById('total-geral').innerText;
-      resumo += `\n💰 Total: ${total}`;
-
-      alert(resumo);
-    }
-  </script>
 </head>
-<body onload="document.getElementById('mesa-info').innerText = getMesa();">
+<script>
+  const precos = {
+    margherita: 11,
+    peperoni: 10,
+    coca: 4,
+    'fanta-laranja': 4,
+    'fanta-uva': 4,
+    sprite: 4
+  };
+
+  function alterarQtd(id, delta) {
+    const input = document.getElementById('qtd-' + id);
+    let valor = parseInt(input.value);
+    valor = Math.max(0, valor + delta);
+    input.value = valor;
+    atualizarTotal(id);
+  }
+
+  function atualizarTotal(id) {
+    const qtd = parseInt(document.getElementById('qtd-' + id).value);
+    const total = qtd * precos[id];
+    document.getElementById('total-' + id).innerText = 'Total: R$ ' + total.toFixed(2);
+    calcularTotalGeral();
+  }
+
+  function calcularTotalGeral() {
+    let total = 0;
+    for (let id in precos) {
+      const qtd = parseInt(document.getElementById('qtd-' + id).value);
+      total += qtd * precos[id];
+    }
+    document.getElementById('total-geral').innerText = 'R$ ' + total.toFixed(2);
+  }
+
+  function enviarPedido() {
+    const formaPagamento = document.querySelector('input[name="pagamento"]:checked');
+    if (!formaPagamento) {
+      alert("Selecione a forma de pagamento.");
+      return;
+    }
+
+    let resumo = `🧾 Ficha da Mesa 1\nForma de pagamento: ${formaPagamento.value}\n\n👨‍🍳 Pedido para a cozinha:\n`;
+    for (let id in precos) {
+      const qtd = parseInt(document.getElementById('qtd-' + id).value);
+      if (qtd > 0) {
+        resumo += `- ${id.replace('-', ' ')}: ${qtd} unidade(s)\n`;
+      }
+    }
+
+    const total = document.getElementById('total-geral').innerText;
+    resumo += `\n💰 Total: ${total}`;
+
+    alert(resumo);
+  }
+</script>
+  
+<body>
   <header>
     <h1>Pedido - FoodTruck</h1>
     <nav>
@@ -76,13 +71,14 @@
   </header>
 
   <section class="frame">
-    <h2>🧾 Ficha da Mesa: <span id="mesa-info"></span></h2>
+    <h2>🧾 Ficha da Mesa: 1</h2>
   </section>
 
   <!-- 🍕 Pizzas -->
   <section class="frame">
     <h2>🍕 Pizzas</h2>
 
+    <!-- Pizza Margherita -->
     <div class="card">
       <img src="https://cdn.pixabay.com/photo/2020/03/28/17/10/pizza-4975426_1280.jpg" alt="Pizza Margherita">
       <h3>Pizza Margherita</h3>
@@ -96,6 +92,7 @@
       <div id="total-margherita" class="total-produto">Total: R$ 0.00</div>
     </div>
 
+    <!-- Pizza Peperoni -->
     <div class="card">
       <img src="https://cdn.pixabay.com/photo/2022/06/15/18/28/pizza-7263827_1280.jpg" alt="Pizza Peperoni">
       <h3>Pizza Peperoni</h3>
@@ -114,6 +111,7 @@
   <section class="frame">
     <h2>🥤 Bebidas</h2>
 
+    <!-- Coca-Cola -->
     <div class="card">
       <img src="https://cdn.pixabay.com/photo/2016/03/05/19/02/coca-cola-1236241_1280.jpg" alt="Coca-Cola">
       <h3>Coca-Cola</h3>
@@ -127,6 +125,7 @@
       <div id="total-coca" class="total-produto">Total: R$ 0.00</div>
     </div>
 
+    <!-- Fanta Laranja -->
     <div class="card">
       <img src="https://cdn.pixabay.com/photo/2020/06/03/17/18/fanta-5254556_1280.jpg" alt="Fanta Laranja">
       <h3>Fanta Laranja</h3>
@@ -140,6 +139,7 @@
       <div id="total-fanta-laranja" class="total-produto">Total: R$ 0.00</div>
     </div>
 
+    <!-- Fanta Uva -->
     <div class="card">
       <img src="https://cdn.pixabay.com/photo/2020/06/03/17/18/fanta-5254557_1280.jpg" alt="Fanta Uva">
       <h3>Fanta Uva</h3>
@@ -153,7 +153,41 @@
       <div id="total-fanta-uva" class="total-produto">Total: R$ 0.00</div>
     </div>
 
+    <!-- Sprite -->
     <div class="card">
       <img src="https://cdn.pixabay.com/photo/2020/06/03/17/18/sprite-5254558_1280.jpg" alt="Sprite">
       <h3>Sprite</h3>
       <p>Sabor limão, lata 350ml</p>
+      <div class="qtd-control">
+        <button type="button" onclick="alterarQtd('sprite', -1)">–</button>
+        <input type="number" id="qtd-sprite" value="0" min="0" onchange="atualizarTotal('sprite')">
+        <button type="button" onclick="alterarQtd('sprite', 1)">+</button>
+      </div>
+      <span>Preço unitário: R$ 4,00</span>
+      <div id="total-sprite" class="total-produto">Total: R$ 0.00</div>
+    </div>
+  </section>
+
+  <!-- 💳 Pagamento -->
+  <section class="frame">
+    <h2>💳 Forma de Pagamento</h2>
+    <label><input type="radio" name="pagamento" value="Cartão de Débito"> Cartão de Débito</label><br>
+    <label><input type="radio" name="pagamento" value="Cartão de Crédito"> Cartão de Crédito</label><br>
+    <label><input type="radio" name="pagamento" value="Vale Refeição"> Vale Refeição</label><br>
+    <label><input type="radio" name="pagamento" value="Dinheiro"> Dinheiro</label>
+  </section>
+
+  <!-- 💰 Total geral e envio -->
+  <section class="frame">
+    <h2>💰 Total Geral</h2>
+    <div id="total-geral">R$ 0.00</div>
+    <div style="text-align:center; margin-top:20px;">
+      <button type="button" onclick="enviarPedido()">Enviar Pedido</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 FoodTruck</p>
+  </footer>
+</body>
+</html>
