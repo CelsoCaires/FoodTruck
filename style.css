@@ -78,7 +78,7 @@ nav a {
   padding: 20px;
   margin: 30px auto;
   max-width: 1000px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .frame h2 {
@@ -96,7 +96,7 @@ nav a {
   margin: 15px auto;
   text-align: center;
   max-width: 300px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .card img {
@@ -135,4 +135,133 @@ nav a {
   margin-top: 10px;
   font-weight: bold;
   color: #d62828;
-  font-size:
+  font-size: 16px;
+}
+
+.total {
+  background: #f8f8f8;
+  border: 2px dashed #d62828;
+  padding: 20px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.total h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.total span {
+  font-size: 22px;
+  font-weight: bold;
+  color: #d62828;
+}
+
+button {
+  background: #d62828;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #a61c1c;
+}
+
+footer {
+  background: #eee;
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+}
+
+#dados-cartao input {
+  width: 250px;
+  padding: 6px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.banner {
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 30px;
+}
+
+.banner img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 20px;
+}
+
+.buttons-container .btn {
+  padding: 12px 25px;
+  background: #d62828;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 6px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.buttons-container .btn:hover {
+  background: #a61c1c;
+}
+
+.payment-container {
+  max-width: 400px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.payment-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.payment-container label {
+  font-weight: bold;
+}
+
+.payment-container input[type="text"] {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.payment-container button {
+  background: #d62828;
+  color: white;
+  padding: 12px 0;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.payment-container button:hover {
+  background: #a61c1c;
+}
