@@ -66,3 +66,49 @@ function verificarMesa() {
     mensagemMesa.textContent = 'Por favor, insira um número de mesa válido!';
   }
 }
+// Carrinho de pedidos
+let carrinho = [];
+
+// Função para adicionar ao pedido
+function adicionarAoPedido(nomeProduto, precoProduto) {
+  const quantidadeProduto = document.querySelector('#quantidade-produto').value;
+
+  if (quantidadeProduto < 1) {
+    alert("Quantidade inválida. Adicione pelo menos 1 item.");
+    return;
+  }
+
+  // Verificar se o produto já existe no carrinho
+  const produtoExistente = carrinho.find(item => item.nome === nomeProduto);
+  if (produtoExistente) {
+    produtoExistente.quantidade += parseInt(quantidadeProduto);
+  } else {
+    carrinho.push({
+      nome: nomeProduto,
+      preco: precoProduto,
+      quantidade: parseInt(quantidadeProduto)
+    });
+  }
+
+  atualizarCarrinho();
+}
+
+// Função para atualizar a exibição do carrinho
+function atualizarCarrinho() {
+  const carrinhoElement = document.querySelector('#carrinho');
+  carrinhoElement.innerHTML = "";  // Limpa o carrinho visual
+
+  carrinho.forEach(item => {
+    const itemCarrinho = document.createElement('div');
+    itemCarrinho.classList.add('item-carrinho');
+    itemCarrinho.innerHTML = `
+      <p>${item.nome} - ${item.quantidade} x R$ ${item.preco.toFixed(2)}</p>
+      <p>Total: R$ ${(item.preco * item.quantidade).toFixed(2)}</p>
+    `;
+    carrinhoElement.appendChild(itemCarrinho);
+  });
+
+  // Exibir total
+  const totalCarrinho = carrinho.reduce((total, item) => total + (item.preco * item.quantidade), 0);
+  document.querySelector('#total-pedido').textContent = `Total: R$ ${totalCarrinho.toFixed(2)}`;
+}
