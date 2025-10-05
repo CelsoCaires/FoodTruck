@@ -24,22 +24,38 @@ section {
   padding: 20px;
 }
 
-.item {
+.card {
   background: #fff;
   border: 1px solid #ccc;
+  border-radius: 10px;
   padding: 15px;
   margin-bottom: 20px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
+  text-align: center;
+  max-width: 300px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.item img {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 8px;
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
+}
+
+.card p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.card span {
+  font-weight: bold;
+  color: #d62828;
 }
 
 footer {
