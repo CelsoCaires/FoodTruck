@@ -41,12 +41,33 @@
     document.getElementById('total-geral').innerText = 'R$ ' + total.toFixed(2);
   }
 
-  function enviarPedido() {
-    const formaPagamento = document.querySelector('input[name="pagamento"]:checked');
-    if (!formaPagamento) {
-      alert("Selecione a forma de pagamento.");
-      return;
-    }
+function enviarPedido() {
+  const formaPagamento = document.querySelector('input[name="pagamento"]:checked');
+  if (!formaPagamento) {
+    alert("Selecione a forma de pagamento.");
+    return;
+  }
+
+  // Verifica campos do cartão
+  const numero = document.getElementById('numero-cartao').value.trim();
+  const cvv = document.getElementById('cvv').value.trim();
+  const validade = document.getElementById('validade').value.trim();
+  const nome = document.getElementById('nome-cartao').value.trim();
+
+  if (!numero || !cvv || !validade || !nome) {
+    alert("Preencha todos os dados do cartão.");
+    return;
+  }
+
+  // Simula pagamento aprovado
+  alert("✅ Pagamento efetuado com sucesso.\n📦 Pedido enviado para a cozinha.");
+
+  // Redireciona para página principal após 2 segundos
+  setTimeout(() => {
+    window.location.href = "index.html";
+  }, 2000);
+}
+
 
     let resumo = `🧾 Ficha da Mesa 1\nForma de pagamento: ${formaPagamento.value}\n\n👨‍🍳 Pedido para a cozinha:\n`;
     for (let id in precos) {
@@ -223,6 +244,7 @@ function detectarBandeira() {
   </footer>
 </body>
 </html>
+
 
 
 
