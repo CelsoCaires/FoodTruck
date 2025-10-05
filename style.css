@@ -20,6 +20,41 @@ nav a {
   font-weight: bold;
 }
 
+.qtd-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin: 10px 0;
+}
+
+.qtd-control button {
+  background: #d62828;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.qtd-control button:hover {
+  background: #a61c1c;
+}
+
+.qtd-control input[type="number"] {
+  width: 45px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.total-produto {
+  margin-top: 8px;
+  font-weight: bold;
+  color: #d62828;
+}
+
+
 .banner-img {
   width: 100%;
   max-height: 300px;
@@ -133,3 +168,4 @@ footer {
   padding: 10px;
   font-size: 14px;
 }
+
