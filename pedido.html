@@ -1,143 +1,42 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Pedido - FoodTruck</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido - Food Truck</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>FoodTruck - Faça Seu Pedido</h1>
-    <nav>
-      <a href="#cardapio">Voltar ao Cardápio</a>
-    </nav>
-  </header>
+    <header>
+        <h1>Seu Pedido</h1>
+    </header>
 
-  <!-- 🛋 Verificação da Mesa -->
-  <section class="frame">
-    <h2>📍 Verifique Sua Mesa</h2>
-    <label for="numero-mesa">Digite o número da mesa:</label><br>
-    <input type="number" id="numero-mesa" placeholder="Número da Mesa" min="1" onchange="verificarMesa()">
-    <div id="mensagem-mesa" style="font-weight: bold;"></div>
-  </section>
+    <div class="order-summary">
+        <h2>Resumo do Pedido</h2>
+        <div class="order-item">
+            <p>Hambúrguer Gourmet x 2</p>
+            <p>R$ 57,80</p>
+        </div>
+        <div class="order-item">
+            <p>Fritas Crocantes x 1</p>
+            <p>R$ 14,90</p>
+        </div>
 
-  <!-- 🍕 Cardápio de Pizzas -->
-  <section class="frame" id="cardapio">
-    <h2>🍕 Nossas Pizzas</h2>
+        <div class="total">
+            <h3>Total: <span>R$ 72,70</span></h3>
+        </div>
 
-    <!-- Pizza Margherita -->
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1609771518469-2b67c68cba74" alt="Pizza Margherita">
-      <h3>Pizza Margherita</h3>
-      <p>Molho de tomate, mussarela fresca, manjericão e parmesão.</p>
-      <div class="qtd-control">
-        <button onclick="alterarQtd('margherita', -1)">–</button>
-        <input type="number" id="qtd-margherita" value="0" min="0" onchange="atualizarTotal('margherita')">
-        <button onclick="alterarQtd('margherita', 1)">+</button>
-      </div>
-      <span>Preço: R$ 11,00</span>
-      <div id="total-margherita" class="total-produto">Total: R$ 0,00</div>
+        <form action="pagamento.html" method="GET">
+            <div>
+                <label for="mesa">Número da Mesa</label>
+                <input type="text" id="mesa" name="mesa" placeholder="Digite o número da mesa" required>
+            </div>
+            <button type="submit" class="btn">Ir para Pagamento</button>
+        </form>
     </div>
 
-    <!-- Pizza Peperoni -->
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1582477028756-3c1534321326" alt="Pizza Peperoni">
-      <h3>Pizza Peperoni</h3>
-      <p>Peperoni crocante, queijo derretido e molho especial.</p>
-      <div class="qtd-control">
-        <button onclick="alterarQtd('peperoni', -1)">–</button>
-        <input type="number" id="qtd-peperoni" value="0" min="0" onchange="atualizarTotal('peperoni')">
-        <button onclick="alterarQtd('peperoni', 1)">+</button>
-      </div>
-      <span>Preço: R$ 10,00</span>
-      <div id="total-peperoni" class="total-produto">Total: R$ 0,00</div>
-    </div>
-  </section>
-
-  <!-- 🥤 Bebidas -->
-  <section class="frame">
-    <h2>🥤 Bebidas</h2>
-
-    <!-- Coca-Cola -->
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1601742649832-62311be9d238" alt="Coca-Cola">
-      <h3>Coca-Cola</h3>
-      <p>Lata 350ml</p>
-      <div class="qtd-control">
-        <button onclick="alterarQtd('coca', -1)">–</button>
-        <input type="number" id="qtd-coca" value="0" min="0" onchange="atualizarTotal('coca')">
-        <button onclick="alterarQtd('coca', 1)">+</button>
-      </div>
-      <span>Preço: R$ 4,00</span>
-      <div id="total-coca" class="total-produto">Total: R$ 0,00</div>
-    </div>
-
-    <!-- Fanta Laranja -->
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1601742649832-62311be9d238" alt="Fanta Laranja">
-      <h3>Fanta Laranja</h3>
-      <p>Lata 350ml</p>
-      <div class="qtd-control">
-        <button onclick="alterarQtd('fanta-laranja', -1)">–</button>
-        <input type="number" id="qtd-fanta-laranja" value="0" min="0" onchange="atualizarTotal('fanta-laranja')">
-        <button onclick="alterarQtd('fanta-laranja', 1)">+</button>
-      </div>
-      <span>Preço: R$ 4,00</span>
-      <div id="total-fanta-laranja" class="total-produto">Total: R$ 0,00</div>
-    </div>
-
-    <!-- Fanta Uva -->
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1591645204605-389b4c1b9257" alt="Fanta Uva">
-      <h3>Fanta Uva</h3>
-      <p>Lata 350ml</p>
-      <div class="qtd-control">
-        <button onclick="alterarQtd('fanta-uva', -1)">–</button>
-        <input type="number" id="qtd-fanta-uva" value="0" min="0" onchange="atualizarTotal('fanta-uva')">
-        <button onclick="alterarQtd('fanta-uva', 1)">+</button>
-      </div>
-      <span>Preço: R$ 4,00</span>
-      <div id="total-fanta-uva" class="total-produto">Total: R$ 0,00</div>
-    </div>
-
-    <!-- Sprite -->
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1601742649832-62311be9d238" alt="Sprite">
-      <h3>Sprite</h3>
-      <p>Lata 350ml</p>
-      <div class="qtd-control">
-        <button onclick="alterarQtd('sprite', -1)">–</button>
-        <input type="number" id="qtd-sprite" value="0" min="0" onchange="atualizarTotal('sprite')">
-        <button onclick="alterarQtd('sprite', 1)">+</button>
-      </div>
-      <span>Preço: R$ 4,00</span>
-      <div id="total-sprite" class="total-produto">Total: R$ 0,00</div>
-    </div>
-  </section>
-
-  <!-- 💳 Forma de Pagamento -->
-  <section class="frame">
-    <h2>💳 Forma de Pagamento</h2>
-    <label><input type="radio" name="pagamento" value="Cartão de Débito" onchange="mostrarCamposCartao()"> Cartão de Débito</label><br>
-    <label><input type="radio" name="pagamento" value="Cartão de Crédito" onchange="mostrarCamposCartao()"> Cartão de Crédito</label><br>
-    <label><input type="radio" name="pagamento" value="Vale Refeição" onchange="mostrarCamposCartao()"> Vale Refeição</label><br>
-
-    <div id="dados-cartao" style="display:none; margin-top:15px;">
-      <label>Número do Cartão:</label><br>
-      <input type="text" id="numero-cartao" maxlength="19" oninput="detectarBandeira()" placeholder="Ex: 4111 1111 1111 1111"><br><br>
-
-      <label>Nome no Cartão:</label><br>
-      <input type="text" id="nome-cartao" maxlength="40" placeholder="Ex: JOÃO DA SILVA"><br><br>
-
-      <label>Data de Validade (MM/AA):</label><br>
-      <input type="text" id="validade" maxlength="5" placeholder="Ex: 12/26"><br><br>
-
-      <label>CVV:</label><br>
-      <input type="text" id="cvv" maxlength="4" placeholder="Ex: 123"><br><br>
-
-      <div id="bandeira-cartao" style="font-weight:bold; color:#d62828;"></div>
-    </div>
-  </section>
+    <footer>
+        <p>&copy; 2025 Food Truck Delícias. Todos os direitos reservados.</p>
+    </footer>
 </body>
 </html>
