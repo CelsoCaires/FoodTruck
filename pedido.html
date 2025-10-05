@@ -114,6 +114,52 @@
       <span>Preço unitário: R$ 4,00</span>
       <div id="total-sprite" class="total-produto">Total: R$ 0.00</div>
     </div>
+
+  <!-- Total geral -->
+<div class="card total">
+  <h3>Total Geral</h3>
+  <div id="total-geral">R$ 0.00</div>
+</div>
+
+<div style="text-align:center; margin-top:20px;">
+  <button type="button" onclick="enviarPedido()">Enviar Pedido</button>
+</div>
+
+<script>
+  function calcularTotalGeral() {
+    const ids = ['margherita', 'peperoni', 'coca', 'fanta-laranja', 'fanta-uva', 'sprite'];
+    const precos = { margherita: 11, peperoni: 10, coca: 4, 'fanta-laranja': 4, 'fanta-uva': 4, sprite: 4 };
+    let total = 0;
+    ids.forEach(id => {
+      const qtd = parseInt(document.getElementById('qtd-' + id).value);
+      total += qtd * precos[id];
+    });
+    document.getElementById('total-geral').innerText = 'R$ ' + total.toFixed(2);
+  }
+
+  function atualizarTotal(id, preco) {
+    const qtd = parseInt(document.getElementById('qtd-' + id).value);
+    document.getElementById('total-' + id).innerText = 'Total: R$ ' + (qtd * preco).toFixed(2);
+    calcularTotalGeral();
+  }
+
+  function alterarQtd(id, preco, delta) {
+    const input = document.getElementById('qtd-' + id);
+    let valor = parseInt(input.value);
+    valor = Math.max(0, valor + delta);
+    input.value = valor;
+    atualizarTotal(id, preco);
+  }
+
+  function enviarPedido() {
+    alert("Pedido enviado com sucesso!");
+  }
+</script>
+
+  
+  
+  
+  
   </section>
 
   <footer>
@@ -121,3 +167,4 @@
   </footer>
 </body>
 </html>
+
